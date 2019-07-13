@@ -18,7 +18,7 @@
                     {% if sitepage.title != page.title and 
                         sitepage.title %}
                     <li>
-                        <a href="{{ site.baseurl }}/{{ sitepage.url }}">{{sitepage.title}}</a>
+                        <a href="{{ site.baseurl }}{{ sitepage.url }}">{{sitepage.title}}</a>
                     </li>
                     {% endif %}
                     {% endfor %}
