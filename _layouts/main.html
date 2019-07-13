@@ -15,7 +15,8 @@
             <nav>
                 <ul>
                     {% for sitepage in site.pages %}
-                    {% if sitepage.title != page.title %}
+                    {% if sitepage.title != page.title and 
+                        sitepage.title %}
                     <li>
                         <a href="{{ sitepage.url }}">{{sitepage.title}}</a>
                     </li>
