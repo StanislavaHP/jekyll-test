@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{site.title}}</title>
+</head>
+
+<body>
+    <div class="site">
+        <header class="site-header">
+            <h1 class="site-title">
+                <a href="/">
+                    {{page.title}}
+                </a>
+            </h1>
+            <nav>
+                <ul>
+                    {% for page in site.pages %}
+                    {% if page.title %}
+                    <li>
+                        <a href="{{ page.url }}">{{page.title}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% for post in site.posts %}
+                    <li>
+                        <a href="{{ post.url }}">{{post.title}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </header>
+        <main class="side-main">
+            {% if page.title %}
+            <h1>{{page.title}}</h1>
+            {% endif %}
+            {{content}}
+        </main>
+        <aside class="side-sidebar">
+
+        </aside>
+        <footer class="site-footer">
+            <p>All rights reserved &copy;</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
