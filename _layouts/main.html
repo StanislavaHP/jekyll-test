@@ -6,26 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{site.title}}</title>
+    <link rel="stylesheet" href="{{ site.baseurl }}/fontawesome-5.9.0/css/all.min.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/site.css">
+    <script src="{{ site.baseurl }}/scripts/site.js"></script>
 </head>
 
-<body>
+<body class="
+{% if page.title %}page page-{{ page.title | slugify }}{% endif %}
+{% if post.title %}post{% endif %}
+{% if page.home %}home{% endif %}
+">
     <div class="site">
-        <header class="site-header">
-            <nav>
-                <ul>
-                    {% for sitepage in site.pages %}
-                    {% if sitepage.title != page.title and 
-                        sitepage.title %}
-                    <li>
-                        <a href="{{ site.baseurl }}{{ sitepage.url }}">{{sitepage.title}}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-            </nav>
+        <header>
+
+            {% if page.home == true %}
+            <h1 class="site-title">
+                <a href="{{ site.baseurl }}/">{{site.title}}</a>
+            </h1>
+            {% else %}
+            <p class="site-title">
+                <a href="{{ site.baseurl }}/">{{site.title}}</a>
+            </p>
+            {% endif %}
+
+            {% include navigation.html location="header" %}
+
         </header>
-        <main class="side-main">
+        <main class="site-main">
+
             {% if page.title %}
             <h1 class="site-title">
                 {{page.title}}
@@ -33,12 +41,17 @@
             {% endif %}
 
             {{content}}
+
         </main>
         <aside class="side-sidebar">
-
+            {% include sidebar.html %}
         </aside>
-        <footer class="site-footer">
+        <footer>
+
             <p>All rights reserved &copy;</p>
+
+            {% include navigation.html location="footer" %}
+
         </footer>
     </div>
 
